@@ -687,12 +687,13 @@ class GoogleMap extends Component {
 
           draw() {
             this_.updateCounter_++;
-            this_._onBoundsChanged(map, maps, !this_.props.debounced);
 
             if (!this_.googleApiLoadedCalled_) {
               this_._onGoogleApiLoaded({ map, maps, ref: this_.googleMapDom_ });
               this_.googleApiLoadedCalled_ = true;
             }
+
+            this_._onBoundsChanged(map, maps, !this_.props.debounced);
 
             if (this_.mouse_) {
               const latLng = this_.geoService_.fromContainerPixelToLatLng(
